@@ -9,6 +9,7 @@ constexpr char WIFI_PASSWORD[] = "spieIoTpass33";
 constexpr uint8_t VESC_ID_01 = 1;
 
 // Current to apply when drive button is held
-constexpr float DRIVE_CURRENT_A = 1.0f;
+constexpr float DRIVE_CURRENT_A  = 3.0f;
+constexpr float BRAKE_CURRENT_A  = 5.0f;
 
 }  // namespace app_config

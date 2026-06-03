@@ -8,6 +8,7 @@
 #include "vesc_can.h"
 
 static bool s_driving = false;
+static bool s_braking = false;
 
 void control_logic_init(void) {
     gpio_config_t in_cfg = {};
@@ -22,13 +23,24 @@ void control_logic_init(void) {
 void control_logic_step(void) {
     vesc_can_poll();
 
-    bool button_right = (gpio_get_level(io_pins::BUTTON_RIGHT) == 0); // active low
+    const bool button_right = (gpio_get_level(io_pins::BUTTON_RIGHT) == 0);
+    const bool button_left  = (gpio_get_level(io_pins::BUTTON_LEFT)  == 0);
 
+    // Drive
     if (button_right && !s_driving) {
         vesc_can_set_current(app_config::VESC_ID_01, app_config::DRIVE_CURRENT_A);
         s_driving = true;
     } else if (!button_right && s_driving) {
         vesc_can_set_current(app_config::VESC_ID_01, 0.0f);
         s_driving = false;
+    }
+
+    // Brake
+    if (button_left && !s_braking) {
+        vesc_can_set_current_brake(app_config::VESC_ID_01, app_config::BRAKE_CURRENT_A);
+        s_braking = true;
+    } else if (!button_left && s_braking) {
+        vesc_can_set_current_brake(app_config::VESC_ID_01, 0.0f);
+        s_braking = false;
     }
 }
