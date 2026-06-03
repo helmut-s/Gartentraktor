@@ -1,0 +1,25 @@
+# ESP-IDF build artifacts
+build/
+
+# Managed and downloaded component sources
+managed_components/
+dependencies.lock
+
+# Python virtual environments
+.python_env/
+venv/
+.venv/
+
+# Editor and OS files
+.vscode/*.log
+.DS_Store
+Thumbs.db
+
+# CMake and Ninja temporary files
+CMakeCache.txt
+CMakeFiles/
+compile_commands.json
+ninja*.log
+
+# Optional local config overrides
+sdkconfig.old

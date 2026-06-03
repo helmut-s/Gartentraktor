@@ -1,0 +1,11 @@
+{
+    "idf.currentSetup": "C:\\Users\\helmu\\esp\\v5.5.2\\esp-idf",
+    "idf.adapterTargetName": "esp32c3",
+    "idf.customExtraVars": {
+        "IDF_TARGET": "esp32c3"
+    },
+    "idf.openOcdConfigs": [
+        "board/esp32c3-builtin.cfg"
+    ],
+    "idf.flashType": "UART"
+}
